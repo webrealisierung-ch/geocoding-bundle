@@ -1,0 +1,7 @@
+parameters:
+    wr.geocoding.geocoder.apikey:
+
+services:
+    wr.geocoding.geocoder:
+        class: Wr\GeocodingBundle\Service\Geocoder
+        arguments: ['@monolog.logger']
