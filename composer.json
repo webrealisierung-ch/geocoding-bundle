@@ -2,7 +2,7 @@
   "name": "wr/geocoding-bundle",
   "type": "contao-bundle",
   "description": "Geocoding bundle for Contao Open Source CMS",
-  "keywords": ["geocoding","coding","googlemaps"],
+  "keywords": ["geocoding","coding","googlemaps","contao"],
   "homepage": "https://github.com/webrealisierung-ch/geocoding-bundle",
   "license": "LGPL-3.0",
   "authors": [
