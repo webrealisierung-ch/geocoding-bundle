@@ -1,4 +1,4 @@
-#Geocoding Bundle for the Contao Open Source CMS
+# Geocoding Bundle for the Contao Open Source CMS
 
 With this bundle for you can easily calculate the geo position from a given adress, city, place or country over the Google Geocode API with Contao 4.4.*
 
@@ -6,11 +6,11 @@ A Google API key is required. You can generate a API key under the following lin
 
 ## How to install
 
-###contao/standard-edition
+### contao/standard-edition
 
 todo
 
-###contao/managed-edition
+### contao/managed-edition
 
 todo
 
@@ -45,10 +45,10 @@ $Geocoder->geocoderResponse; return the response object form the Google API
 
 The bundle is not stable yet. You can use it on your own risk. If you have a feature request or find a bugs or issues feel free submit a issue unter https://github.com/webrealisierung-ch/geocoding-bundle/issues
 
-##Licence
+## Licence
 
 The geocoding bundle is licensed under the terms of the LGPLv3.
 
-##Getting Support
+## Getting Support
 
 Contact us: [mail@webrealisierung.ch](mailto:mail@webrealisierung.ch)
