@@ -34,7 +34,7 @@ Alternatively you can access the following properties.
 
 ```php
 $Geocoder->lat; //return the latitute
-$Geocoder->long; //return the longitute
+$Geocoder->lng; //return the longitute
 $Geocoder->coords; // return the coordinate in seprated with a coma
 $Geocoder->formattedAdress; // return the adress formatted by the Google Geocoding API
 $Geocoder->placeId; //return the Google Place ID
@@ -43,7 +43,7 @@ $Geocoder->status; //return the Google API status
 $Geocoder->geocoderResponse; return the response object form the Google API
 ```
 
-The bundle is not stable yet. You can use it on your own risk. If you have a feature request or find a bugs or issues feel free submit a issue unter https://github.com/webrealisierung-ch/geocoding-bundle/issues
+The bundle is not stable yet. You can use it on your own risk. If you have a feature request or find  bugs or issues feel free submit a issue unter https://github.com/webrealisierung-ch/geocoding-bundle/issues
 
 ## Licence
 
