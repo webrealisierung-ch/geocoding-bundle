@@ -11,7 +11,7 @@ use Contao\CoreBundle\Monolog\ContaoContext;
 use Psr\Log\LoggerInterface;
 
 /**
- * A class to calculate the geo position form a given adress, city, place or country over the google geocode api.
+ * A class to calculate the geo position form a given address, city, place or country over the google geocode api.
  * Requires a active google maps api key
  *
  * @author Daniel Steuri <mail@webrealisierung.ch>
@@ -26,7 +26,7 @@ class Geocoder
     public $lat;
     public $coords;
 
-    public $formattedAdress;
+    public $formattedAddress;
     public $placeId;
     public $types;
     public $status;
@@ -43,15 +43,15 @@ class Geocoder
     }
 
     /**
-     * @param $adress string
+     * @param $address string
      * @param $country string
      * @param $apiKey string
      * @return bool|mixed|null
      */
-    public function calculate($adress,$country,$apiKey)
+    public function calculate($address,$country,$apiKey)
     {
         $apiKey = urlencode($apiKey);
-        $adress = urlencode($adress);
+        $address = urlencode($address);
         $country = urlencode($country);
 
         if (!function_exists('curl_init')) {
@@ -63,7 +63,7 @@ class Geocoder
 
         $urlParams = sprintf(
             'https://maps.googleapis.com/maps/api/geocode/json?address=%s+%s&key=%s',
-            $adress, $country, $apiKey
+            $address, $country, $apiKey
         );
 
         $ch = curl_init($urlParams);
@@ -88,13 +88,17 @@ class Geocoder
                 $this->lat = $geocoderResponse->results[0]->geometry->location->lat;
                 $this->lng = $geocoderResponse->results[0]->geometry->location->lng;
                 $this->coords=$this->lat.",".$this->lng;
-                $this->logger->info('The coordinates are correcty calculated with the specified adress.', array(
+                $this->formattedAddress=$geocoderResponse->results[0]->formatted_address;
+                $this->placeId=$geocoderResponse->results[0]->place_id;
+                $this->types=$geocoderResponse->results[0]->types;
+                $this->status=$geocoderResponse->status;
+                $this->logger->info('The coordinates are correcty calculated with the specified address.', array(
                     'contao' => new ContaoContext(__CLASS__.'::'.__FUNCTION__, ContaoContext::GENERAL
                     )));
                 break;
             case "ZERO_RESULTS":
                 $this->status=$geocoderResponse->status;
-                $this->logger->info('The coordinates could not be calculated with the specified adress.', array(
+                $this->logger->info('The coordinates could not be calculated with the specified address.', array(
                     'contao' => new ContaoContext(__CLASS__.'::'.__FUNCTION__, ContaoContext::GENERAL
                     )));
                 break;
@@ -112,7 +116,7 @@ class Geocoder
                 break;
             case "INVALID_REQUEST":
                 $this->status=$geocoderResponse->status;
-                $this->logger->info('Adress, Component or LatLng is missing in the request', array(
+                $this->logger->info('Address, Component or LatLng is missing in the request', array(
                     'contao' => new ContaoContext(__CLASS__.'::'.__FUNCTION__, TL_GENERAL
                     )));
                 break;
